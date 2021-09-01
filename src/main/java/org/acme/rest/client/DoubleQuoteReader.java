@@ -24,19 +24,19 @@ public class DoubleQuoteReader implements MessageBodyReader<String> {
         }
 
         if (null == annotations) {
-            Logger.getLogger(getClass()).info("annotations is null");
+            Logger.getLogger(getClass()).info("Annotations are null!");
             return false;
         }
 
         for (final Annotation a : annotations) {
             Logger.getLogger(getClass()).info("Check annotation " + a.annotationType().getSimpleName());
 
-            if (a.annotationType() == SubResource.class) {
-                return false;
+            if (a.annotationType() == MainResource.class) {
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     @Override
